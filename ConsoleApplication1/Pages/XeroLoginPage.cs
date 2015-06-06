@@ -20,17 +20,17 @@ namespace ConsoleApplication1
 
         private IWebElement emailWebElement 
         {
-            get { return Driver().FindElement(By.Id("email"), 10); }
+            get { return Driver.FindElement(By.Id("email"), 10); }
         }
 
         private IWebElement passwordWebElement
         {
-            get { return Driver().FindElement(By.Id("password"), 10); }
+            get { return Driver.FindElement(By.Id("password"), 10); }
         }
 
         private IWebElement LoginButton
         {
-            get { return Driver().FindElement(By.Id("submitButton"), 10); }
+            get { return Driver.FindElement(By.Id("submitButton"), 10); }
         }  
 
         public void Login()

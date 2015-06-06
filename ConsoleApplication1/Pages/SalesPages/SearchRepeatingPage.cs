@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using XeroExercise.Data;
 
 namespace XeroExercise.Pages
 {
@@ -17,22 +18,32 @@ namespace XeroExercise.Pages
 
         public SearchRepeatingPage()
 	    {
-            PageFactory.InitElements(Driver(),this);           
+            PageFactory.InitElements(Driver,this);           
 	    }
 
         private IWebElement NewRepeatingInvoiceButton 
         {
-            get { return Driver().FindElement(By.CssSelector("#ext-gen30 > a"), 10); }
+            get { return Driver.FindElement(By.CssSelector("#ext-gen30 > a"), 10); }
         }
 
         private IWebElement NewCreditButton
         {
-            get { return Driver().FindElement(By.Id("ext-gen32")); }
+            get { return Driver.FindElement(By.Id("ext-gen32")); }
         }
 
         private IWebElement SendStatementsButton
         {
-            get { return Driver().FindElement(By.Id("ext-gen34")); }
+            get { return Driver.FindElement(By.Id("ext-gen34")); }
+        }
+
+        private IWebElement MessageWebElement
+        {
+            get { return Driver.FindElement(By.XPath("//form/div/div/div/div/p"), 10); }
+        }
+
+        public string getMessage()
+        {
+            return MessageWebElement.Text;
         }
 
         public SearchRepeatingPage gotoPage()
@@ -48,12 +59,7 @@ namespace XeroExercise.Pages
             return new NewRepeatingInvoicePage();
         }
 
-        public void CreateNewRepeatingInvoice(String Date)
-        {
-            var newInvoice = new NewRepeatingInvoicePage();
-            newInvoice.CreateNewRepeatingInvoice();
-
-        }
+        
 
     }
 

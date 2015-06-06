@@ -16,12 +16,12 @@ namespace XeroExercise.Pages
 
         public SalesReceiveablePage()
 	    {
-            PageFactory.InitElements(Driver(),this);           
+            PageFactory.InitElements(Driver,this);           
 	    }
 
         private IWebElement RepeatingLink
         {
-            get { return Driver().FindElement(By.LinkText("Repeating"), 10); }
+            get { return Driver.FindElement(By.LinkText("Repeating"), 10); }
         }
 
         public SalesReceiveablePage gotoPage()

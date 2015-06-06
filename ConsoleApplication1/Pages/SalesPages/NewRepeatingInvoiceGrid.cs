@@ -18,38 +18,29 @@ namespace XeroExercise.Pages
 
         public NewRepeatingInvoiceGrid()
 	    {
-            PageFactory.InitElements(Driver(),this);           
+            PageFactory.InitElements(Driver,this);           
 	    }
 
         #region webelements
 
         private IWebElement addNewLineItemButton
         {
-            get { return Driver().FindElement(By.Id("addNewLineItemButton"), 10); }
+            get { return Driver.FindElement(By.Id("addNewLineItemButton"), 10); }
         }
-/*
-        public IList<IWebElement> GridLines()
-        {
-            //return Driver().FindElements(By.XPath(string.Format("//tr[starts-with(@id,'//div[@id='ext-gen20']/div')]")));
-            return Driver().FindElements(By.XPath(string.Format("//div[starts-with(@id='ext-gen20']/div')]")));
-
-            //var xpath = string.Format(@"//tr[@id='{0}_DXDataRow{1}']/td[{2}]", GridName, rowIndex, columnIndex);          
-        }
-*/
 
         public IWebElement GridCell(int row, int column)
         {
-            return Driver().FindElement(By.XPath(string.Format("//div[{0}]/table/tbody/tr/td[{1}]/div", row, column)));
+            return Driver.FindElement(By.XPath(string.Format("//div[{0}]/table/tbody/tr/td[{1}]/div", row, column)));
         }
 
         public IWebElement ItemDropDown()
         {
-            return Driver().FindElement(By.XPath(string.Format("//div[2]/div/img")));
+            return Driver.FindElement(By.XPath(string.Format("//div[2]/div/img")));
         }
 
         public IWebElement ItemSelectList(int row)
         {
-            return Driver().FindElement(By.XPath(string.Format("//div/div[{0}]", row)));
+            return Driver.FindElement(By.XPath(string.Format("//div/div[{0}]", row)));
         } 
 
        
@@ -60,13 +51,8 @@ namespace XeroExercise.Pages
             GridCell(row, 2).Click();            
             ItemDropDown().Click();                   
             ItemSelectList(itemindex).Click();
-            GridCell(row, 3).Click();
-            
+            GridCell(row, 3).Click();            
         }
-
-
-
-
 
 
     }

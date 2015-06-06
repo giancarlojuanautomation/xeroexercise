@@ -11,15 +11,12 @@ using System.Configuration;
 using ConsoleApplication1.Pages;
 using System.Threading;
 using XeroExercise.Pages;
+using XeroExercise.Data;
 
 namespace XeroExercise
 {
     public class RepeatingInvoiceTest
     {
-        static void Main()
-        {
-
-        }
 
         [SetUp]
         public void BeforeTest()
@@ -46,16 +43,17 @@ namespace XeroExercise
             
             var repeatInvoiceList = salesPage.clickRepeatingLink();
             var newInvoicePage = repeatInvoiceList.clickRepeatingInvoiceBtn();
-            newInvoicePage.CreateNewRepeatingInvoice(DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"));
 
-            
+            newInvoicePage.CreateNewRepeatingInvoice((new DataCreateInvoice()));
+
+            Assert.AreEqual("Repeating Template Saved. Click to view.", repeatInvoiceList.getMessage());
+           
        }
 
         [TearDown]
         public void Cleanup()
         {
-           // WebDriverFactory.driver.Close();
-
+            WebDriverFactory.driver.Close();
 
         }
     }

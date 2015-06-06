@@ -27,10 +27,8 @@ namespace XeroExercise.Pages
             WebDriverFactory.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrlStr"] + RelativeURL);
         }
 
-        public static IWebDriver Driver()
-        {
-            return WebDriverFactory.driver;
-        }
+       public static IWebDriver Driver = WebDriverFactory.driver;
+
 
     }
 }

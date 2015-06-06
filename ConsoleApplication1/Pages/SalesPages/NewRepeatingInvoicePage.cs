@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using XeroExercise.Data;
 
 namespace XeroExercise.Pages
 {
@@ -18,74 +19,74 @@ namespace XeroExercise.Pages
 
         public NewRepeatingInvoicePage()
 	    {
-            PageFactory.InitElements(Driver(),this);           
+            PageFactory.InitElements(Driver,this);           
 	    }
 
         #region webelements
 
         private IWebElement RepeatElement
         {
-            get { return Driver().FindElement(By.Id("PeriodUnit"), 10); }
+            get { return Driver.FindElement(By.Id("PeriodUnit"), 10); }
         }      
         
         public IWebElement DefaultSalesTaxSelectElement
         {
-            get { return Driver().FindElement(By.Id("TimeUnit_value"), 10); }
+            get { return Driver.FindElement(By.Id("TimeUnit_value"), 10); }
         }
         
         private IWebElement InvoiceDateElement
         {
-            get { return Driver().FindElement(By.Id("StartDate")); }
+            get { return Driver.FindElement(By.Id("StartDate")); }
         }
 
         private IWebElement DueDateElement
         {
-            get { return Driver().FindElement(By.Id("DueDateDay")); }
+            get { return Driver.FindElement(By.Id("DueDateDay")); }
         }
 
         public IWebElement DueDateSelectElement
         {
-            get { return Driver().FindElement(By.Id("DueDateType_value")); }
+            get { return Driver.FindElement(By.Id("DueDateType_value")); }
         }
 
         private IWebElement EndDateElement
         {
-            get { return Driver().FindElement(By.Id("EndDate")); }
+            get { return Driver.FindElement(By.Id("EndDate")); }
         }
 
         private IWebElement SaveAsDraftElement
         {
-            get { return Driver().FindElement(By.Id("saveAsDraft")); }
+            get { return Driver.FindElement(By.Id("saveAsDraft")); }
         }
         
         private IWebElement SaveasApproveElement
         {
-            get { return Driver().FindElement(By.Id("saveAsAutoApproved")); }
+            get { return Driver.FindElement(By.Id("saveAsAutoApproved")); }
         }
 
         private IWebElement SaveasApproveforSendingElement
         {
-            get { return Driver().FindElement(By.Id("saveAsAutoApprovedAndEmail")); }
+            get { return Driver.FindElement(By.Id("saveAsAutoApprovedAndEmail")); }
         }
 
         private IWebElement ContactName
         {
-            get { return Driver().FindElement(By.XPath("//div[3]/div/div/div/div/div/div/input"), 10); }
+            get { return Driver.FindElement(By.XPath("//div[3]/div/div/div/div/div/div/input"), 10); }
         }
 
         private IWebElement Reference
         {
-            get { return Driver().FindElement(By.XPath("//div/div/div/div[2]/div/input"), 10); }
+            get { return Driver.FindElement(By.XPath("//div/div/div/div[2]/div/input"), 10); }
         }
 
         public SelectElement BrandingSelectElement
         {
-            get { return new SelectElement(Driver().FindElement(By.Id("TemplateDropDown_value"))); }
+            get { return new SelectElement(Driver.FindElement(By.Id("TemplateDropDown_value"))); }
         }
 
         private IWebElement SaveButton
         {
-            get { return Driver().FindElement(By.XPath("(//button[@type='button'])[3]")); }
+            get { return Driver.FindElement(By.XPath("(//button[@type='button'])[3]")); }
         }
 
         public NewRepeatingInvoiceGrid InvoiceLineGrid
@@ -130,24 +131,23 @@ namespace XeroExercise.Pages
 
 
 
-        public void CreateNewRepeatingInvoice(string InvoiceDate)
+        public void CreateNewRepeatingInvoice(DataCreateInvoice invoiceData)
         {
             ContactName.Clear();
-            ContactName.SendKeys("ABC");
+            ContactName.SendKeys(invoiceData.Customer);
 
             InvoiceDateElement.Clear();
-            InvoiceDateElement.SendKeys(InvoiceDate);
-            DueDateElement.SendKeys("25");
-            
-            InvoiceLineGrid.selectItem(1, 10);
-            InvoiceLineGrid.selectItem(2, 10);
-            InvoiceLineGrid.selectItem(3, 10);          
+            InvoiceDateElement.SendKeys(invoiceData.InvoiceDate);
+            DueDateElement.SendKeys(invoiceData.DueDay);
 
-            SaveStatus("Draft");
+            for (int i = 1; i <= invoiceData.numberofItems; i++)
+            {
+                InvoiceLineGrid.selectItem(i, 10);                
+            }
+
+            SaveStatus(invoiceData.Status);
 
             clickSaveButton();
-
-            Thread.Sleep(5000);
 
         }
 
