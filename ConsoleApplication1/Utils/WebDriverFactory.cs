@@ -9,7 +9,6 @@ namespace ConsoleApplication1
 {
     public static class WebDriverFactory
     {
-        public static IWebDriver driver { get; set; }
 
         public static IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
         {
@@ -21,11 +20,6 @@ namespace ConsoleApplication1
             return driver.FindElement(by);
         }
 
-        public static void WaitforElement(String elementId)
-        {                                
-            var waitableDriver = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
-            var element = waitableDriver.Until(d => d.FindElement(By.Id(elementId)));
-        }
 
     }
 

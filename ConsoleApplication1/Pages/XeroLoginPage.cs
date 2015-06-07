@@ -14,24 +14,24 @@ namespace ConsoleApplication1
     public class XeroLoginPage : BasePage
     {
 
-        public XeroLoginPage()
+        public XeroLoginPage(IWebDriver _driver)
         {
-            PageFactory.InitElements(RepeatingInvoiceTest.driver, this);
+            PageFactory.InitElements(_driver, this);
         }
 
         private IWebElement emailWebElement 
         {
-            get { return Driver.FindElement(By.Id("email"), 10); }
+            get { return Driver.FindElement(By.Id("email")); }
         }
 
         private IWebElement passwordWebElement
         {
-            get { return Driver.FindElement(By.Id("password"), 10); }
+            get { return Driver.FindElement(By.Id("password")); }
         }
 
         private IWebElement LoginButton
         {
-            get { return Driver.FindElement(By.Id("submitButton"), 10); }
+            get { return Driver.FindElement(By.Id("submitButton")); }
         }  
 
         public void Login()

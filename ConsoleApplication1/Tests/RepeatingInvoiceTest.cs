@@ -12,25 +12,25 @@ using ConsoleApplication1.Pages;
 using System.Threading;
 using XeroExercise.Pages;
 using XeroExercise.Data;
+using XeroExercise.Utils;
+using OpenQA.Selenium.Chrome;
 
 namespace XeroExercise
 {
-    [TestFixture]
     public class RepeatingInvoiceTest
     {
-        
-        public static IWebDriver driver { get; set; }
-        
+        public static IWebDriver driver;
+
         [SetUp]
         public void BeforeTest()
         {
-            RepeatingInvoiceTest.driver = new FirefoxDriver();
+            driver = (new GetWebDriver()).returnWebDriver();
 
-            RepeatingInvoiceTest.driver.Manage().Window.Maximize();
+            driver.Manage().Window.Maximize();
 
-            RepeatingInvoiceTest.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["LoginUrlStr"]);
-            
-            var loginPage = new XeroLoginPage();
+            driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["LoginUrlStr"]);
+
+            var loginPage = new XeroLoginPage(driver);
             loginPage.Login();
 
             //if Demo company is not selected go to Demo company
@@ -53,15 +53,15 @@ namespace XeroExercise
 
             newInvoicePage.CreateNewRepeatingInvoice((new DataCreateInvoice()));
 
-            Console.WriteLine("the new number of invoices are " + repeatInvoiceList.pageGrid().getInvoiceCount());
-
             Assert.AreEqual("Repeating Template Saved. Click to view.", repeatInvoiceList.getMessage());
+
+            Console.WriteLine("the new number of invoices are " + repeatInvoiceList.pageGrid().getInvoiceCount());
             Assert.AreEqual(previousInvoiceCount + 1, repeatInvoiceList.pageGrid().getInvoiceCount());           
            
        }
 
         [Test]
-        public void DeleteInvoice()
+        public void TestDeleteInvoice()
         {
             var salesPage = new SalesReceiveablePage();
             salesPage.gotoPage();
@@ -82,7 +82,7 @@ namespace XeroExercise
         [TearDown]
         public void Cleanup()
         {
-            RepeatingInvoiceTest.driver.Quit();
+            driver.Quit();
 
         }
     }

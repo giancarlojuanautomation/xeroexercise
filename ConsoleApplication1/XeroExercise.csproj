@@ -96,6 +96,7 @@
     <Compile Include="Pages\SalesPages\SearchRepeatingPage.cs" />
     <Compile Include="Pages\SalesPages\SalesReceivablePage.cs" />
     <Compile Include="Pages\XeroDashboardPage.cs" />
+    <Compile Include="Utils\GetWebDriver.cs" />
     <Compile Include="Utils\WebDriverFactory.cs" />
     <Compile Include="Tests\RepeatingInvoiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,7 +128,15 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\packages\WebDriverChromeDriver.2.10\tools\chromedriver.exe">
+      <Link>chromedriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="chromedriver-license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

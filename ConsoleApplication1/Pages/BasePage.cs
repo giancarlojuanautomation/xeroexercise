@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XeroExercise.Utils;
 
 namespace XeroExercise.Pages
 {
@@ -27,7 +28,7 @@ namespace XeroExercise.Pages
             RepeatingInvoiceTest.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrlStr"] + RelativeURL);
         }
 
-        public static IWebDriver Driver = RepeatingInvoiceTest.driver;
+        public IWebDriver Driver = RepeatingInvoiceTest.driver;
 
 
     }
