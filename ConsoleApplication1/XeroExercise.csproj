@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Data\DataCreateInvoice.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\SalesPages\SearchRepeatingGrid.cs" />
     <Compile Include="Pages\SalesPages\NewRepeatingInvoiceGrid.cs" />
     <Compile Include="Pages\SalesPages\NewRepeatingInvoicePage.cs" />
     <Compile Include="Pages\SalesPages\SearchRepeatingPage.cs" />

@@ -59,7 +59,12 @@ namespace XeroExercise.Pages
             return new NewRepeatingInvoicePage();
         }
 
-        
+        public SearchRepeatingGrid pageGrid()
+        {
+            return new SearchRepeatingGrid(); 
+        }
+
+       
 
     }
 

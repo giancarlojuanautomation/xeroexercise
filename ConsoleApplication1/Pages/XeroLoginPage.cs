@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XeroExercise;
 using XeroExercise.Pages;
 
 namespace ConsoleApplication1
@@ -15,7 +16,7 @@ namespace ConsoleApplication1
 
         public XeroLoginPage()
         {
-            PageFactory.InitElements(WebDriverFactory.driver, this);
+            PageFactory.InitElements(RepeatingInvoiceTest.driver, this);
         }
 
         private IWebElement emailWebElement 

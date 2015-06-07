@@ -11,8 +11,8 @@ namespace XeroExercise.Data
         public string InvoiceDate = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"); 
         public string Customer = "ABC";
         public string DueDay = "25";
-        public string Status = "Approved";
-        public int numberofItems = 5;
+        public string Status = "Draft";
+        public int numberofItems = 3;
 
 
     }

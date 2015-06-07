@@ -14,20 +14,20 @@ namespace XeroExercise.Pages
     {
         public BasePage()
         {
-            PageFactory.InitElements(WebDriverFactory.driver, this);
+            PageFactory.InitElements(RepeatingInvoiceTest.driver, this);
         }
 
         public static void NavigateTo(String url)
         {
-            WebDriverFactory.driver.Navigate().GoToUrl(url);
+            RepeatingInvoiceTest.driver.Navigate().GoToUrl(url);
         }
 
         public static void NavigateToPage(String RelativeURL)
         {
-            WebDriverFactory.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrlStr"] + RelativeURL);
+            RepeatingInvoiceTest.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrlStr"] + RelativeURL);
         }
 
-       public static IWebDriver Driver = WebDriverFactory.driver;
+        public static IWebDriver Driver = RepeatingInvoiceTest.driver;
 
 
     }
