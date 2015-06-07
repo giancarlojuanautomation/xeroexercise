@@ -61,6 +61,22 @@ namespace XeroExercise
        }
 
         [Test]
+        public void TestUpdateInvoice()
+        {
+            var salesPage = new SalesReceiveablePage();
+            salesPage.gotoPage();
+
+            var repeatInvoiceList = salesPage.clickRepeatingLink();
+
+            //edit the first invoice
+            var editInvoicepage = repeatInvoiceList.ClickInvoiceLink(1);
+            editInvoicepage.UpdateExistingInvoice("1111101111", "approved");
+
+            Assert.AreEqual("Repeating Template Saved. Click to view.", repeatInvoiceList.getMessage());
+
+        }
+
+        [Test]
         public void TestDeleteInvoice()
         {
             var salesPage = new SalesReceiveablePage();

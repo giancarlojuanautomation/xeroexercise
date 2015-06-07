@@ -74,7 +74,7 @@ namespace XeroExercise.Pages
             get { return Driver.FindElement(By.XPath("//div[3]/div/div/div/div/div/div/input"), 10); }
         }
 
-        private IWebElement Reference
+        private IWebElement ReferenceElement
         {
             get { return Driver.FindElement(By.XPath("//div/div/div/div[2]/div/input"), 10); }
         }
@@ -87,6 +87,11 @@ namespace XeroExercise.Pages
         private IWebElement SaveButton
         {
             get { return Driver.FindElement(By.XPath("(//button[@type='button'])[3]")); }
+        }
+
+        private IWebElement EditScreenSaveButton
+        {
+            get { return Driver.FindElement(By.XPath("(//button[@type='button'])[4]")); }
         }
 
         public NewRepeatingInvoiceGrid InvoiceLineGrid
@@ -129,9 +134,7 @@ namespace XeroExercise.Pages
                        
         }
 
-
-
-        public void CreateNewRepeatingInvoice(DataCreateInvoice invoiceData)
+       public void CreateNewRepeatingInvoice(DataCreateInvoice invoiceData)
         {
             ContactName.Clear();
             ContactName.SendKeys(invoiceData.Customer);
@@ -150,6 +153,18 @@ namespace XeroExercise.Pages
             clickSaveButton();
 
         }
+
+
+
+       public void UpdateExistingInvoice(String referenceupdate, String status)
+       {
+           ReferenceElement.Clear();
+           ReferenceElement.SendKeys(referenceupdate);
+           SaveStatus(status);
+
+           EditScreenSaveButton.Click();
+
+       }
 
 
 

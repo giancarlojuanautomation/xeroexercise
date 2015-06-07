@@ -49,6 +49,15 @@ namespace XeroExercise.Pages
             return elements;          
         }
 
+        public List<IWebElement> getallColumns(int row)
+        {
+            row = row + 1;
+            var lists = getallRows();
+            List<IWebElement> columnvalues = lists[row].FindElements(By.TagName("td")).ToList();
+
+            return columnvalues;
+        }
+
         public int getInvoiceCount()
         {
             return getallRows().Count() - 1; 
@@ -68,6 +77,7 @@ namespace XeroExercise.Pages
             Console.WriteLine("Invoice Status for row " + row + " is " + invoiceStatus);
 
          } 
+
         public void DeleteAnInvoice(int row)
         {
             row = row + 1;
@@ -75,15 +85,10 @@ namespace XeroExercise.Pages
             var columnvalues = lists[row].FindElements(By.TagName("td"));
             var deleterow = columnvalues.ElementAt(0).FindElement(By.Name("selectedInvoices"));
             deleterow.Click();
-
-            //selectedInvoices
-
-            
+          
             DeleteButton.Click();
 
             ConfirmDeletebutton.Click();
-
-
         
         }
 

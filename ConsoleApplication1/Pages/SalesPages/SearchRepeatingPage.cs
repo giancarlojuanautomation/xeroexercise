@@ -64,7 +64,16 @@ namespace XeroExercise.Pages
             return new SearchRepeatingGrid(); 
         }
 
-       
+        public NewRepeatingInvoicePage ClickInvoiceLink(int row)
+        {
+            var rowdata = pageGrid().getallColumns(row-1);
+            rowdata.ElementAt(1).Click();
+
+            return new NewRepeatingInvoicePage();
+
+        }
+
+     
 
     }
 
