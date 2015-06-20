@@ -143,9 +143,9 @@ namespace XeroExercise.Pages
             InvoiceDateElement.SendKeys(invoiceData.InvoiceDate);
             DueDateElement.SendKeys(invoiceData.DueDay);
 
-            for (int i = 1; i <= invoiceData.numberofItems; i++)
+            for (int i = 0; i < invoiceData.numberofItems; i++)
             {
-                InvoiceLineGrid.selectItem(i, 10);                
+                InvoiceLineGrid.selectItem(i, invoiceData.itemindex);                
             }
 
             SaveStatus(invoiceData.Status);

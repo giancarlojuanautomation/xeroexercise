@@ -39,8 +39,7 @@ namespace XeroExercise
 
         }
         
-        [Test]
-        public void TestCreateInvoice()
+        public void TestCreateInvoice(DataCreateInvoice invoiceData)
         {
             var salesPage = new SalesReceiveablePage();
             salesPage.gotoPage();
@@ -51,7 +50,7 @@ namespace XeroExercise
            
             var newInvoicePage = repeatInvoiceList.clickRepeatingInvoiceBtn();
 
-            newInvoicePage.CreateNewRepeatingInvoice((new DataCreateInvoice()));
+            newInvoicePage.CreateNewRepeatingInvoice(invoiceData);
 
             Assert.AreEqual("Repeating Template Saved. Click to view.", repeatInvoiceList.getMessage());
 
@@ -59,6 +58,19 @@ namespace XeroExercise
             Assert.AreEqual(previousInvoiceCount + 1, repeatInvoiceList.pageGrid().getInvoiceCount());           
            
        }
+        [Test]
+        public void TestCreateInvoice1()
+        {
+            TestCreateInvoice(TestData.test[0]);
+        }
+
+        [Test]
+        public void TestCreateInvoice2()
+        {
+            TestCreateInvoice(TestData.test[1]);
+        }
+
+
 
         [Test]
         public void TestUpdateInvoice()

@@ -8,12 +8,12 @@ namespace XeroExercise.Data
 {
     public class DataCreateInvoice
     {
-        public string InvoiceDate = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"); 
-        public string Customer = "ABC";
-        public string DueDay = "25";
-        public string Status = "Draft";
-        public int numberofItems = 3;
-
-
+        public string InvoiceDate { get; set; }
+        public string Customer { get; set; }
+        public string DueDay { get; set; }
+        public string Status { get; set; }
+        public int numberofItems { get; set; }
+        public int itemindex { get; set; }
     }
+
 }

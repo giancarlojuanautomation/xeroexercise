@@ -21,12 +21,13 @@ namespace XeroExercise.Utils
 
         public IWebDriver returnWebDriver()
         {          
-            switch (ConfigurationManager.AppSettings["Browser"])
+            var browser = ConfigurationManager.AppSettings["Browser"].ToLower();
+            switch (browser)
                 {
-                    case "Chrome":
+                    case "chrome":
                         _driver = new ChromeDriver();
                         break;
-                    case "Firefox":
+                    case "firefox":
                         _driver = new FirefoxDriver();
                         break;
                     default:
