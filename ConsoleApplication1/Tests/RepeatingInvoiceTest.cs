@@ -61,13 +61,19 @@ namespace XeroExercise
         [Test]
         public void TestCreateInvoice1()
         {
-            TestCreateInvoice(TestData.test[0]);
+            TestCreateInvoice(TestData.test1);
         }
 
         [Test]
         public void TestCreateInvoice2()
         {
-            TestCreateInvoice(TestData.test[1]);
+            TestCreateInvoice(TestData.test2);
+        }
+        
+        [Test]
+        public void TestCreateInvoice3()
+        {
+            TestCreateInvoice(TestData.test3);
         }
 
 
