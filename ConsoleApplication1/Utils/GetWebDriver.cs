@@ -1,12 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Firefox;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XeroExercise.Utils
 {
@@ -30,7 +26,10 @@ namespace XeroExercise.Utils
                     case "firefox":
                         _driver = new FirefoxDriver();
                         break;
-                    default:
+                    case "iexplorer":
+                    _driver = new InternetExplorerDriver();
+                    break;
+                default:
                         _driver = new FirefoxDriver();
                         break;
                 }
